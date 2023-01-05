@@ -13,16 +13,16 @@ const app_service_1 = require("./app.service");
 const mongoose_1 = require("@nestjs/mongoose");
 const passengers_module_1 = require("./passengers/passengers.module");
 const flights_module_1 = require("./flights/flights.module");
-const auth_module_1 = require("./auth/auth.module");
 const users_module_1 = require("./users/users.module");
+const auth_module_1 = require("./auth/auth.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forRoot("mongodb://127.0.0.1:27017/crud"),
+            mongoose_1.MongooseModule.forRoot("mongodb://127.0.0.1:27017/authentication"),
             passengers_module_1.PassengersModule,
-            flights_module_1.FlightsModule, auth_module_1.AuthModule, users_module_1.UsersModule
+            flights_module_1.FlightsModule, users_module_1.UsersModule, auth_module_1.AuthModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
