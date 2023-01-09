@@ -13,6 +13,8 @@ export class UsersService {
         });
     }
     async getUser(query: object ): Promise<User> {
+        console.log(query);
+        
         return this.userModel.findOne(query);
     }
 }

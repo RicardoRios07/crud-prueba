@@ -21,13 +21,12 @@ let AuthService = class AuthService {
     }
     async validateUser(username, password) {
         const user = await this.usersService.getUser({ username });
-        if (!user)
-            return null;
-        const passwordValid = await bcrypt.compare(password, user.password);
+        console.log(user);
         if (!user) {
             throw new common_1.NotAcceptableException('could not find the user');
         }
-        if (user && passwordValid) {
+        const passwordValid = await bcrypt.compare(password, user.password);
+        if (passwordValid) {
             return user;
         }
         return null;
