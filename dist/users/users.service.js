@@ -21,6 +21,7 @@ let UsersService = class UsersService {
         this.userModel = userModel;
     }
     async createUser(username, password) {
+        console.log(password);
         return this.userModel.create({
             username,
             password,

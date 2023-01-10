@@ -23,13 +23,14 @@ let AuthService = class AuthService {
         const user = await this.usersService.getUser({ username });
         console.log(user);
         if (!user) {
-            throw new common_1.NotAcceptableException('could not find the user');
+            throw new common_1.NotAcceptableException('No se pudo encontrar el usuario');
         }
         const passwordValid = await bcrypt.compare(password, user.password);
-        if (passwordValid) {
-            return user;
+        console.log(passwordValid);
+        if (!passwordValid) {
+            throw new common_1.NotAcceptableException('Contraseña incorrecta');
         }
-        return null;
+        return user;
     }
     async login(user) {
         const payload = { username: user.username, sub: user._id };

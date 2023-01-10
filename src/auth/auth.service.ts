@@ -12,15 +12,16 @@ export class AuthService {
         
         //if (!user) return null;
         if (!user) {
-            throw new NotAcceptableException('could not find the user');
+            throw new NotAcceptableException('No se pudo encontrar el usuario');
         }
         
         const passwordValid = await bcrypt.compare(password, user.password)
-
-        if (passwordValid) {
-            return user;
+        console.log(passwordValid);
+        
+        if (!passwordValid) {
+            throw new NotAcceptableException('Contraseña incorrecta');
         }
-        return null;
+        return user;
     }
     async login(user: any) {
         const payload = { username: user.username, sub: user._id };

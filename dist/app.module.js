@@ -20,7 +20,7 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forRoot("mongodb://127.0.0.1:27017/authentication"),
+            mongoose_1.MongooseModule.forRoot("mongodb://127.0.0.1:27017/crud"),
             passengers_module_1.PassengersModule,
             flights_module_1.FlightsModule, users_module_1.UsersModule, auth_module_1.AuthModule
         ],
